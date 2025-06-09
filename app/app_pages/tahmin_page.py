@@ -3,6 +3,7 @@ import datetime
 import numpy as np
 import pandas as pd
 import pickle
+import os
 from utils import get_weather_by_ilce
 
 def show():
@@ -127,16 +128,16 @@ def show():
             st.error("⚠️ You can't predict with the past hour!")
         else:
             model_paths = {
-                "PM10": "models/pm10_model.pkl",
-                "SO2": "models/so2_model.pkl", 
-                "CO": "models/co_model.pkl",
-                "NO2": "models/no2_model.pkl", 
-                "NO": "models/no_model.pkl", 
-                "NOX": "models/nox_model.pkl",
-                "O3": "models/o3_model.pkl"
+                "PM10": os.path.join("models", "pm10_model.pkl"),
+                "SO2": os.path.join("models", "so2_model.pkl"),
+                "CO": os.path.join("models", "co_model.pkl"),
+                "NO2": os.path.join("models", "no2_model.pkl"),
+                "NO": os.path.join("models", "no_model.pkl"),
+                "NOX": os.path.join("models", "nox_model.pkl"),
+                "O3": os.path.join("models", "o3_model.pkl"),
             }
             model_path = model_paths[selected_pollutant]
-            with open(model_path, "rb") as f:
+            with open(os.path.join(os.path.dirname(__file__), "..", model_path), "rb") as f:
                 data = pickle.load(f)
             model = data["model"]
             mae = data["mae"]
