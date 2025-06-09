@@ -37,7 +37,10 @@ def show():
         'is_weekend', 'is_nighttime', 'is_rush_hour',
     ]
 
-    now = datetime.now(ZoneInfo("Europe/Istanbul"))
+    tz = ZoneInfo("Europe/Istanbul")
+
+    # Şu anki saat (aware datetime)
+    now = datetime.now(tz)
     today = now.date()
     next_full_hour = (now + timedelta(hours=1)).replace(minute=0, second=0, microsecond=0)
 
@@ -55,11 +58,11 @@ def show():
     st.markdown("#### 🗓️ Estimated Date and Time information")
     col_date, col_time = st.columns(2)
     with col_date:
-      selected_date = st.date_input("Date", value=today, min_value=today, label_visibility="collapsed")
+       selected_date = st.date_input("Date", value=today, min_value=today, label_visibility="collapsed")
     with col_time:
-      selected_time = st.time_input("Hour", value=next_full_hour.time(), step=timedelta(hours=1), label_visibility="collapsed")
+       selected_time = st.time_input("Hour", value=next_full_hour.time(), step=timedelta(hours=1), label_visibility="collapsed")
 
-    selected_datetime = datetime.combine(selected_date, selected_time)
+    selected_datetime = datetime.combine(selected_date, selected_time).replace(tzinfo=tz)
     if selected_datetime < now:
       st.warning("⚠️ Please choose a time later than the current time!")
 
