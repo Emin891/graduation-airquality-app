@@ -10,3 +10,4 @@ seaborn
 requests
 streamlit-option-menu
 folium
+streamlit_folium
