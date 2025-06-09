@@ -65,7 +65,7 @@ def show():
     selected_datetime = datetime.combine(selected_date, selected_time).replace(tzinfo=tz)
     if selected_datetime < now:
       st.warning("⚠️ Please choose a time later than the current time!")
-
+    weather_data = None 
     if st.button("📥 Autofill Weather Data", disabled=(selected_datetime < now)):
       weather_data = get_weather_by_ilce(ilce, selected_datetime)
     if weather_data:
