@@ -5,6 +5,7 @@ import pandas as pd
 import pickle
 import os
 from utils import get_weather_by_ilce
+from zoneinfo import ZoneInfo
 
 def show():
     st.title(":foggy: Istanbul Air Pollutant Prediction")
@@ -33,7 +34,7 @@ def show():
         'is_weekend', 'is_nighttime', 'is_rush_hour',
     ]
 
-    now = datetime.datetime.now()
+    now = datetime.now(ZoneInfo("Europe/Istanbul"))
     today = now.date()
     next_full_hour = (now + datetime.timedelta(hours=1)).replace(minute=0, second=0, microsecond=0)
 
