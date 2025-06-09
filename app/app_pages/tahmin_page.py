@@ -68,10 +68,10 @@ def show():
     
     if st.button("📥 Autofill Weather Data", disabled=(selected_datetime < now)):
       weather_data = get_weather_by_ilce(ilce, selected_datetime)
-    if weather_data:
+      if weather_data:
         st.success("✅ Data received successfully!")
         st.session_state["auto_weather"] = weather_data
-    else:
+      else:
         st.warning("⚠️ Failed to retrieve data from API.")
 
     weather = st.session_state.get("auto_weather", {})
