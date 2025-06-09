@@ -25,12 +25,12 @@ def show():
     col1, col2 = st.columns(2)
 
     with col1:
-     image = Image.open("images/image1.png")
+     image = Image.open("../images/image1.png")
      resized_image = image.resize((400, 400))  
      st.image(resized_image)
 
     with col2:
-     image = Image.open("images/image2.png")
+     image = Image.open("../images/image2.png")
      resized_image = image.resize((400, 400))  
      st.image(resized_image)
 
@@ -70,24 +70,24 @@ def show():
     col1, col2 = st.columns(2)
 
     with col1:
-     image = Image.open("images/image11.png")
+     image = Image.open("../images/image11.png")
      resized_image = image.resize((700, 400))  
      st.image(resized_image)
 
     with col2:
-     image = Image.open("images/image7.png")
+     image = Image.open("../images/image7.png")
      resized_image = image.resize((700, 400)) 
      st.image(resized_image)
 
     col1, col2 = st.columns(2)
 
     with col1:
-     image = Image.open("images/image9.png")
+     image = Image.open("../images/image9.png")
      resized_image = image.resize((700, 400)) 
      st.image(resized_image)
 
     with col2:
-     image = Image.open("images/image10.png")
+     image = Image.open("../images/image10.png")
      resized_image = image.resize((700, 400))  
      st.image(resized_image)
 

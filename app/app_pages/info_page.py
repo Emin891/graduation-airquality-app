@@ -79,12 +79,12 @@ def show():
     col1, col2 = st.columns(2)
 
     with col1:
-     image = Image.open("images/image12.png")
+     image = Image.open("../images/image12.png")
      resized_image = image.resize((400, 300))  
      st.image(resized_image)
 
     with col2:
-     image = Image.open("images/image13.png")
+     image = Image.open("../images/image13.png")
      resized_image = image.resize((400, 300))  
      st.image(resized_image)
 
@@ -101,7 +101,7 @@ def show():
     """, unsafe_allow_html=True)
 
     
-    image = Image.open("images/image14.png")  
+    image = Image.open("../images/image14.png")
     resized_image = image.resize((800, 280))  
     st.image(resized_image)
 
