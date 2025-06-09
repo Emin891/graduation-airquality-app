@@ -73,24 +73,28 @@ def show():
     col1, col2 = st.columns(2)
 
     with col1:
-     image = Image.open("../images/image11.png")
+     image_path = os.path.join(os.path.dirname(__file__), "..", "images", "image11.png")
+     image = Image.open(image_path)
      resized_image = image.resize((700, 400))  
      st.image(resized_image)
 
     with col2:
-     image = Image.open("../images/image7.png")
+     image_path = os.path.join(os.path.dirname(__file__), "..", "images", "image7.png")
+     image = Image.open(image_path)
      resized_image = image.resize((700, 400)) 
      st.image(resized_image)
 
     col1, col2 = st.columns(2)
 
     with col1:
-     image = Image.open("../images/image9.png")
+     image_path = os.path.join(os.path.dirname(__file__), "..", "images", "image9.png")
+     image = Image.open(image_path)
      resized_image = image.resize((700, 400)) 
      st.image(resized_image)
 
     with col2:
-     image = Image.open("../images/image10.png")
+     image_path = os.path.join(os.path.dirname(__file__), "..", "images", "image10.png")
+     image = Image.open(image_path)
      resized_image = image.resize((700, 400))  
      st.image(resized_image)
 
