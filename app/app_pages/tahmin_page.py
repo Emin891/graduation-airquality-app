@@ -16,7 +16,7 @@ def show():
     st.markdown("#### Select Pollutant:")
     cols = st.columns(7)
     pollutants = ["PM10", "SO2", "CO", "NO2", "NOX", "NO", "O3"]
-
+    weather_data = None
     for i, pol in enumerate(pollutants):
         if st.session_state.pollutant_selected == pol:
             button_style = f"background-color:#ffe6e6;border:2px solid red;border-radius:10px;font-weight:bold;"
