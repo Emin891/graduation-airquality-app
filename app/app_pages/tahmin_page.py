@@ -127,13 +127,13 @@ def show():
             st.error("⚠️ You can't predict with the past hour!")
         else:
             model_paths = {
-                "PM10": "../models/pm10_model.pkl",
-                "SO2": "../models/so2_model.pkl", 
-                "CO": "../models/co_model.pkl",
-                "NO2": "../models/no2_model.pkl", 
-                "NO": "../models/no_model.pkl", 
-                "NOX": "../models/nox_model.pkl",
-                "O3": "../models/o3_model.pkl"
+                "PM10": "models/pm10_model.pkl",
+                "SO2": "models/so2_model.pkl", 
+                "CO": "models/co_model.pkl",
+                "NO2": "models/no2_model.pkl", 
+                "NO": "models/no_model.pkl", 
+                "NOX": "models/nox_model.pkl",
+                "O3": "models/o3_model.pkl"
             }
             model_path = model_paths[selected_pollutant]
             with open(model_path, "rb") as f:
