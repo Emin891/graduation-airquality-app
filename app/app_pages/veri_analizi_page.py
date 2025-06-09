@@ -5,7 +5,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 
-df = pd.read_csv("cleaned_final.csv")
+df = pd.read_csv("app/cleaned_final.csv")
+
 
 def show():
     st.title("📊 Data Analysis and Visualization")
