@@ -5,8 +5,9 @@ import pandas as pd
 import pickle
 import os
 from utils import get_weather_by_ilce
-from datetime import datetime
+from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
+
 
 
 def show():
@@ -38,7 +39,8 @@ def show():
 
     now = datetime.now(ZoneInfo("Europe/Istanbul"))
     today = now.date()
-    next_full_hour = (now + datetime.timedelta(hours=1)).replace(minute=0, second=0, microsecond=0)
+    next_full_hour = (now + timedelta(hours=1)).replace(minute=0, second=0, microsecond=0)
+
 
     ilceler = ["Adalar", "Arnavutköy", "Ataşehir", "Avcılar", "Bağcılar", "Bahçelievler",
         "Bakırköy", "Başakşehir", "Bayrampaşa", "Beşiktaş", "Beykoz", "Beylikdüzü",
@@ -53,21 +55,21 @@ def show():
     st.markdown("#### 🗓️ Estimated Date and Time information")
     col_date, col_time = st.columns(2)
     with col_date:
-        selected_date = st.date_input("Date", value=today, min_value=today, label_visibility="collapsed")
+      selected_date = st.date_input("Date", value=today, min_value=today, label_visibility="collapsed")
     with col_time:
-        selected_time = st.time_input("Hour", value=next_full_hour, step=datetime.timedelta(hours=1), label_visibility="collapsed")
+      selected_time = st.time_input("Hour", value=next_full_hour.time(), step=timedelta(hours=1), label_visibility="collapsed")
 
-    selected_datetime = datetime.datetime.combine(selected_date, selected_time)
+    selected_datetime = datetime.combine(selected_date, selected_time)
     if selected_datetime < now:
-        st.warning("⚠️ Please choose a time later than the current time!")
+      st.warning("⚠️ Please choose a time later than the current time!")
 
     if st.button("📥 Autofill Weather Data", disabled=(selected_datetime < now)):
-        weather_data = get_weather_by_ilce(ilce, selected_datetime)
-        if weather_data:
-            st.success("✅ Data received successfully!")
-            st.session_state["auto_weather"] = weather_data
-        else:
-            st.warning("⚠️ Failed to retrieve data from API.")
+      weather_data = get_weather_by_ilce(ilce, selected_datetime)
+    if weather_data:
+        st.success("✅ Data received successfully!")
+        st.session_state["auto_weather"] = weather_data
+    else:
+        st.warning("⚠️ Failed to retrieve data from API.")
 
     weather = st.session_state.get("auto_weather", {})
 
