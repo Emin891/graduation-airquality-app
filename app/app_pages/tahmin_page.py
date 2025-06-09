@@ -5,7 +5,9 @@ import pandas as pd
 import pickle
 import os
 from utils import get_weather_by_ilce
+from datetime import datetime
 from zoneinfo import ZoneInfo
+
 
 def show():
     st.title(":foggy: Istanbul Air Pollutant Prediction")
