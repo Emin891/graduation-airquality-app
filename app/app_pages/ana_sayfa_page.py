@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 from PIL import Image
 
 
@@ -25,12 +26,14 @@ def show():
     col1, col2 = st.columns(2)
 
     with col1:
-     image = Image.open("../images/image1.png")
+     image_path = os.path.join(os.path.dirname(__file__), "..", "images", "image1.png")
+     image = Image.open(image_path)
      resized_image = image.resize((400, 400))  
      st.image(resized_image)
 
     with col2:
-     image = Image.open("../images/image2.png")
+     image_path = os.path.join(os.path.dirname(__file__), "..", "images", "image2.png")
+     image = Image.open(image_path)
      resized_image = image.resize((400, 400))  
      st.image(resized_image)
 
