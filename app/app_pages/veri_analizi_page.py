@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import pickle
+import os
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -90,7 +91,8 @@ def show():
         # 3. Feature Importance
     elif viz_option == "📉 Feature Importance (Model)":
         st.subheader(f"{selected_pollutant} - Feature Importance Plot")
-        with open(f"models/{selected_pollutant.lower()}_model.pkl", "rb") as f:
+        model_path = os.path.join(os.path.dirname(__file__), "..", "models", f"{selected_pollutant.lower()}_model.pkl")
+        with open(model_path, "rb") as f:
             model_data = pickle.load(f)
         model = model_data["model"]
         features = model_data["features"]
@@ -109,7 +111,8 @@ def show():
     # 4. Actual vs Predicted
     elif viz_option == "🎯 Actual vs Predicted":
         st.subheader(f"{selected_pollutant} - Actual vs Predicted")
-        with open(f"models/{selected_pollutant.lower()}_model.pkl", "rb") as f:
+        model_path = os.path.join(os.path.dirname(__file__), "..", "models", f"{selected_pollutant.lower()}_model.pkl")
+        with open(model_path, "rb") as f:
             model_data = pickle.load(f)
         model = model_data["model"]
         features = model_data["features"]
@@ -129,7 +132,8 @@ def show():
     # 5. Residual Error Distribution
     elif viz_option == "🧩 Prediction Error Distribution":
         st.subheader(f"{selected_pollutant} - Prediction Error Distribution")
-        with open(f"models/{selected_pollutant.lower()}_model.pkl", "rb") as f:
+        model_path = os.path.join(os.path.dirname(__file__), "..", "models", f"{selected_pollutant.lower()}_model.pkl")
+        with open(model_path, "rb") as f:
             model_data = pickle.load(f)
         model = model_data["model"]
         features = model_data["features"]
