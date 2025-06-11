@@ -39,7 +39,7 @@ def show():
 
     tz = ZoneInfo("Europe/Istanbul")
 
-    # Şu anki saat (aware datetime)
+    # Şu anki saat 
     now = datetime.now(tz)
     today = now.date()
     next_full_hour = (now + timedelta(hours=1)).replace(minute=0, second=0, microsecond=0)
